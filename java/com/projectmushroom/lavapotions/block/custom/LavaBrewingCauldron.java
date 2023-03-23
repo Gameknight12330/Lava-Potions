@@ -92,14 +92,17 @@ public class LavaBrewingCauldron extends BaseEntityBlock {
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos,
                                  Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-    	BlockEntity entity = pLevel.getBlockEntity(pPos);
-        if(entity instanceof LavaBrewingStationBlockEntity) {
-            System.out.println("You touched the cauldron");
-            NetworkHooks.openGui(((ServerPlayer)pPlayer), (LavaBrewingStationBlockEntity)entity, pPos);
-        } else {
-            throw new IllegalStateException("Our Container provider is missing!");
+        if (!pLevel.isClientSide()) {
+            BlockEntity entity = pLevel.getBlockEntity(pPos);
+            if(entity instanceof LavaBrewingStationBlockEntity) {
+            	System.out.println("You touched the cauldron");
+                NetworkHooks.openGui(((ServerPlayer)pPlayer), (LavaBrewingStationBlockEntity)entity, pPos);
+            } else {
+                throw new IllegalStateException("Our Container provider is missing!");
+            }
         }
-    return InteractionResult.sidedSuccess(pLevel.isClientSide());
+
+        return InteractionResult.sidedSuccess(pLevel.isClientSide());
     }
     
     @Nullable
