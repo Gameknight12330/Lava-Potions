@@ -31,19 +31,19 @@ public class LavaBrewingCauldronRecipe implements Recipe<SimpleContainer> {
     public boolean matches(SimpleContainer pContainer, Level pLevel) {
     	int matches = 0;
     	boolean retVal = false;
-    	SimpleContainer containCopy = pContainer;
+    	SimpleContainer containCopy = new SimpleContainer(pContainer.getContainerSize());
     	for (int i = 0; i < recipeItems.size(); i++)
     	{
     		for (int x = 0; x < 3; x++)
     		{
-    			if (recipeItems.get(i).test(containCopy.getItem(x)))
+    			if (recipeItems.get(i).test(containCopy.getItem(x + 3)))
     			{
     				matches += 1;
-    				containCopy.removeItem(x, 1);
+    				containCopy.removeItem(x + 3, 1);
     			}
     		}
     	}
-    	if (matches == 3)
+    	if (matches == recipeItems.size())
     	{
     		retVal = true;
     	} else
