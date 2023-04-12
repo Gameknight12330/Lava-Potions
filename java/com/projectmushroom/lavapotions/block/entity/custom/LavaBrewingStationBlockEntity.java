@@ -32,6 +32,7 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.items.wrapper.RecipeWrapper;
 
 public class LavaBrewingStationBlockEntity extends BlockEntity implements MenuProvider {
 	private final ItemStackHandler itemHandler = new ItemStackHandler(6) {
@@ -145,7 +146,7 @@ public class LavaBrewingStationBlockEntity extends BlockEntity implements MenuPr
     
     private static void craftItem(LavaBrewingStationBlockEntity entity) {
     	Level level = entity.level;
-        SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
+        RecipeWrapper inventory = new RecipeWrapper(entity.itemHandler);
         for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
             inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
         }
@@ -154,12 +155,9 @@ public class LavaBrewingStationBlockEntity extends BlockEntity implements MenuPr
                 .getRecipeFor(LavaBrewingCauldronRecipe.Type.INSTANCE, inventory, level);
 
         if(match.isPresent()) {
-            entity.itemHandler.extractItem(3,1, false);
-            entity.itemHandler.extractItem(4,1, false);
-            entity.itemHandler.extractItem(5,1, false);
-
             for (int i = 0; i < 3; i++)
             {
+            	entity.itemHandler.extractItem(i + 3, 1, false);
                 if (entity.itemHandler.getStackInSlot(i).getItem() == ItemInit.LAVA_BOTTLE.get())
                 {
                 	entity.itemHandler.setStackInSlot(i, new ItemStack(match.get().getResultItem().getItem()));
@@ -172,7 +170,7 @@ public class LavaBrewingStationBlockEntity extends BlockEntity implements MenuPr
 
     private static boolean hasRecipe(LavaBrewingStationBlockEntity entity) {
     	Level level = entity.level;
-        SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
+    	RecipeWrapper inventory = new RecipeWrapper(entity.itemHandler);
         for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
             inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
         }
@@ -180,8 +178,8 @@ public class LavaBrewingStationBlockEntity extends BlockEntity implements MenuPr
         Optional<LavaBrewingCauldronRecipe> match = level.getRecipeManager()
                 .getRecipeFor(LavaBrewingCauldronRecipe.Type.INSTANCE, inventory, level);
 
-        return match.isPresent() && (hasLavaBottleInSlot1(entity) || hasLavaBottleInSlot2(entity)
-                || hasLavaBottleInSlot3(entity));
+        return (match.isPresent() && ((hasLavaBottleInSlot1(entity) || hasLavaBottleInSlot2(entity)
+                || hasLavaBottleInSlot3(entity))));
     }
 
     private static boolean hasLavaBottleInSlot1(LavaBrewingStationBlockEntity entity) {
