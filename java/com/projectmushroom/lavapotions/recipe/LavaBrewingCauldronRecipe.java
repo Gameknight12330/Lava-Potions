@@ -31,13 +31,15 @@ public class LavaBrewingCauldronRecipe implements Recipe<SimpleContainer> {
     public boolean matches(SimpleContainer pContainer, Level pLevel) {
     	int matches = 0;
     	boolean retVal = false;
+    	SimpleContainer containCopy = pContainer;
     	for (int i = 0; i < recipeItems.size(); i++)
     	{
     		for (int x = 0; x < 3; x++)
     		{
-    			if (recipeItems.get(i).test(pContainer.getItem(x)))
+    			if (recipeItems.get(i).test(containCopy.getItem(x)))
     			{
     				matches += 1;
+    				containCopy.removeItem(x, 1);
     			}
     		}
     	}
