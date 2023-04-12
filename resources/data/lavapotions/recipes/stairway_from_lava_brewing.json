@@ -1,0 +1,14 @@
+{
+    "type": "lavapotions:lava_brewing",
+    "ingredients": [
+        {
+            "item": "minecraft:enchanted_golden_apple"
+        }, 
+        {
+            "item": "minecraft:nether_star"
+        }
+    ],
+    "output": {
+        "item": "lavapotions:stairway"
+    }
+}

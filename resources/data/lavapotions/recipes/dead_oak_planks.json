@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": 
+    [
+       {
+           "tag": "lavapotions:dead_oak_logs"
+       }
+    ],
+    "result": 
+    {
+        "item": "lavapotions:dead_oak_planks",
+        "count": 4
+    }
+}
