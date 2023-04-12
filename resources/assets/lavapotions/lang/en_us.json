@@ -2,6 +2,7 @@
     "item.lavapotions.reinforced_bottle": "Reinforced Bottle",
     "item.lavapotions.lava_bottle": "Bottle of Lava",
     "itemGroup.lavapotions": "Lava Potions",
+    "itemGroup.dead_wood": "Dead Wood",
     "item.lavapotions.guardian_eye": "Elder Guardian Eye",
     "item.lavapotions.ravager_horn": "Ravager Horn",
     "item.lavapotions.eaten_fish": "Eaten Fish",
@@ -59,7 +60,27 @@
     "item.lavapotions.stairway": "Stairway to Heaven",
     "item.lavapotions.splash_stairway": "Stairway to Heaven (Splash)",
     
+    "item.lavapotions.water_control": "Potion of Water Control",
+    "effect.lavapotions.water_control": "Water Control",
+    
     "entity.lavapotions.reaper": "The Red Reaper",
     
-    "block.lavapotions.lava_brewing_cauldron": "Lava Brewing Cauldron"
+    "block.lavapotions.lava_brewing_cauldron": "Lava Brewing Cauldron",
+    
+    "block.lavapotions.dead_dirt_block": "Dead Dirt Block",
+    
+    "block.lavapotions.dead_oak_wood": "Dead Oak Wood",
+    "block.lavapotions.dead_oak_log": "Dead Oak Log",
+    "block.lavapotions.stripped_dead_oak_wood": "Stripped Dead Oak Wood",
+    "block.lavapotions.stripped_dead_oak_log": "Stripped Dead Oak Log",
+    "block.lavapotions.dead_oak_planks": "Dead Oak Planks",
+    "block.lavapotions.dead_oak_stairs": "Dead Oak Stairs",
+    "block.lavapotions.dead_oak_slab": "Dead Oak Slab",
+    "block.lavapotions.dead_oak_fence": "Dead Oak Fence",
+    "block.lavapotions.dead_oak_fence_gate": "Dead Oak Fence Gate",
+    "block.lavapotions.dead_oak_button": "Dead Oak Button",
+    "block.lavapotions.dead_oak_pressure_plate": "Dead Oak Pressure Plate",
+    "block.lavapotions.dead_oak_door": "Dead Oak Door",
+    "block.lavapotions.dead_oak_trapdoor": "Dead Oak Trapdoor",
+    "block.lavapotions.dead_oak_sign": "Dead Oak Sign"
 }
