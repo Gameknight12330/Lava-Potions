@@ -4,16 +4,16 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 
-public class FieryRegen extends MobEffect {
+public class WaterControl extends MobEffect {
 
-	public FieryRegen(MobEffectCategory category, int amplifier) {
+	public WaterControl(MobEffectCategory category, int amplifier) {
 		super(category, amplifier);
 	}
 	
 	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		if (entity.getHealth() < entity.getMaxHealth()) 
+		if (entity.isInWater() && entity.getHealth() < entity.getMaxHealth()) 
 		{
-            entity.heal(0.5F);
+            entity.heal(0.1F);
         }
 	}
 	
@@ -22,3 +22,4 @@ public class FieryRegen extends MobEffect {
 	}
 
 }
+

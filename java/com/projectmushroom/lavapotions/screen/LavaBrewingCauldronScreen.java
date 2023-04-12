@@ -17,6 +17,8 @@ public class LavaBrewingCauldronScreen extends AbstractContainerScreen<LavaBrewi
 
 	public LavaBrewingCauldronScreen(LavaBrewingCauldronMenu menu, Inventory inv, Component component) {
 		super(menu, inv, component);
+		this.imageHeight = 185;
+		this.inventoryLabelY = 92;
 	}
 
 	@Override
@@ -28,6 +30,10 @@ public class LavaBrewingCauldronScreen extends AbstractContainerScreen<LavaBrewi
         int y = (height - imageHeight) / 2;
 
         this.blit(pPoseStack, x, y, 0, 0, imageWidth, imageHeight);
+        
+        if(menu.isCrafting()) {
+            blit(pPoseStack, x + 138, y + 61, 208, 31, 8, menu.getScaledProgress());
+        }
     }
 
     @Override

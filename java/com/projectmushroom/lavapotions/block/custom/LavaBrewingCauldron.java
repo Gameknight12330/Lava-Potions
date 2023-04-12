@@ -78,7 +78,8 @@ public class LavaBrewingCauldron extends BaseEntityBlock {
         return RenderShape.MODEL;
     }
 
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
         if (pState.getBlock() != pNewState.getBlock()) {
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);

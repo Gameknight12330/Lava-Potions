@@ -21,5 +21,13 @@ public class MixinStridingPlayer
 		{
 			callback.setReturnValue(fluidstate.is(FluidTags.LAVA));
 		}
+		if(((LivingEntity)(Object)this).hasEffect(LavaEffects.WATER_CONTROL.get()))
+		{
+			callback.setReturnValue(fluidstate.is(FluidTags.WATER));
+		}
+		if(((LivingEntity)(Object)this).hasEffect(LavaEffects.WATER_CONTROL.get()) && ((LivingEntity)(Object)this).hasEffect(LavaEffects.STRIDING.get()))
+		{
+			callback.setReturnValue(fluidstate.is(FluidTags.WATER) || fluidstate.is(FluidTags.LAVA));
+		}
 	}
 }

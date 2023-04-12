@@ -24,6 +24,9 @@ public class LavaEffects {
 	public static final RegistryObject<MobEffect> FIERY_REGEN = LAVA_EFFECTS.register("fiery_regen", 
 			() -> new FieryRegen(MobEffectCategory.BENEFICIAL, 14707686));
 	
+	public static final RegistryObject<MobEffect> WATER_CONTROL = LAVA_EFFECTS.register("water_control", 
+			() -> new WaterControl(MobEffectCategory.BENEFICIAL, 14707686));
+	
 	public static final RegistryObject<MobEffect> INVINC = LAVA_EFFECTS.register("invinc", 
 			() -> new Invinc(MobEffectCategory.BENEFICIAL, 16711680)); 
 	

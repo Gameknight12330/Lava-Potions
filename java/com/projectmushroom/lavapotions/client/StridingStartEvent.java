@@ -28,13 +28,13 @@ public class StridingStartEvent extends Event
 				player.clearFire();
 			}
 			if (player.isInLava()) {
-		         CollisionContext collisioncontext = CollisionContext.of(player);
-		         if (collisioncontext.isAbove(LiquidBlock.STABLE_SHAPE, player.blockPosition(), true) && !player.level.getFluidState(player.blockPosition().above()).is(FluidTags.LAVA)) {
-		            player.setOnGround(true);
-		         } else {
-		            player.setDeltaMovement(player.getDeltaMovement().scale(0.5D).add(0.0D, 0.05D, 0.0D));
-		         }
-		     }
+		        CollisionContext collisioncontext = CollisionContext.of(player);
+		        if (collisioncontext.isAbove(LiquidBlock.STABLE_SHAPE, player.blockPosition(), true) && !player.level.getFluidState(player.blockPosition().above()).is(FluidTags.LAVA)) {
+		           player.setOnGround(true);
+		        } else {
+		           player.setDeltaMovement(player.getDeltaMovement().scale(0.5D).add(0.0D, 0.05D, 0.0D));
+		        }
+		    }
 		}
 	}
 	

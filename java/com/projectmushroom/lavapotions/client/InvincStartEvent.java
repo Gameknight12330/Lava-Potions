@@ -30,7 +30,7 @@ public class InvincStartEvent extends Event
 		LivingEntity entity = event.getEntityLiving();
 		if(event.getPotionEffect().getEffect().equals(LavaEffects.INVINC.get())) 
 		{
-			if (entity.hasEffect(LavaEffects.INVINC.get())== false)
+			if (entity.hasEffect(LavaEffects.INVINC.get()) == false)
 			{
 				entity.getAttribute(Attributes.KNOCKBACK_RESISTANCE).addTransientModifier(invinc);
 			}

@@ -13,6 +13,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SignItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -103,6 +104,11 @@ public class ItemInit {
 					.food(new FoodProperties.Builder().alwaysEat().effect(
 					() -> new MobEffectInstance(LavaEffects.BURNING_SPEED.get(), 2400), 1f).build())));
 	
+	public static final RegistryObject<Item> WATER_CONTROL = register("water_control",
+			() -> new LavaPotion(new Item.Properties().stacksTo(1).fireResistant().tab(LavaPotions.LAVA_POTIONS)
+					.food(new FoodProperties.Builder().alwaysEat().effect(
+					() -> new MobEffectInstance(LavaEffects.WATER_CONTROL.get(), 2400), 1f).build())));
+	
 	public static final RegistryObject<Item> INVINC = register("invinc",
 			() -> new LavaPotion(new Item.Properties().stacksTo(1).fireResistant().tab(LavaPotions.LAVA_POTIONS)
 					.food(new FoodProperties.Builder().alwaysEat().effect(
@@ -132,6 +138,10 @@ public class ItemInit {
 			() -> new LavaPotion(new Item.Properties().stacksTo(1).fireResistant().tab(LavaPotions.LAVA_POTIONS)
 					.food(new FoodProperties.Builder().alwaysEat().effect(
 					() -> new MobEffectInstance(LavaEffects.THEOS.get(), 8400), 1f).build())));
+	
+	public static final RegistryObject<Item> DEAD_OAK_SIGN = ITEMS.register("dead_oak_sign",
+            () -> new SignItem(new Item.Properties().tab(LavaPotions.DEAD_WOOD).stacksTo(16),
+                    BlockInit.DEAD_OAK_SIGN.get(), BlockInit.DEAD_OAK_WALL_SIGN.get()));
 	
 	public static final RegistryObject<Item> GUARDIAN_EYE = register("guardian_eye",
 			() -> new Item(new Item.Properties().stacksTo(64).tab(LavaPotions.LAVA_POTIONS)));
