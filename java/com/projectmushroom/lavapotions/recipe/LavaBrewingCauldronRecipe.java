@@ -3,6 +3,7 @@ package com.projectmushroom.lavapotions.recipe;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.projectmushroom.lavapotions.LavaPotions;
+import com.projectmushroom.lavapotions.block.entity.custom.LavaBrewingStationBlockEntity;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.FriendlyByteBuf;
@@ -12,10 +13,11 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.items.wrapper.RecipeWrapper;
 
 import javax.annotation.Nullable;
 
-public class LavaBrewingCauldronRecipe implements Recipe<SimpleContainer> {
+public class LavaBrewingCauldronRecipe implements Recipe<RecipeWrapper> {
     private final ResourceLocation id;
     private final ItemStack output;
     private final NonNullList<Ingredient> recipeItems;
@@ -28,33 +30,29 @@ public class LavaBrewingCauldronRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public boolean matches(SimpleContainer pContainer, Level pLevel) {
+    public boolean matches(RecipeWrapper pContainer, Level pLevel) {
     	int matches = 0;
-    	boolean retVal = false;
-    	SimpleContainer containCopy = new SimpleContainer(pContainer.getContainerSize());
+    	RecipeWrapper containCopy = pContainer;
+    	System.out.println(containCopy);
     	for (int i = 0; i < recipeItems.size(); i++)
     	{
     		for (int x = 0; x < 3; x++)
     		{
+    			System.out.println("Checking if " + recipeItems.get(i).toString() + " matches " + containCopy.getItem(x + 3));
     			if (recipeItems.get(i).test(containCopy.getItem(x + 3)))
     			{
+    				System.out.println(recipeItems.get(i).toString() + " matches " + containCopy.getItem(x + 3));
     				matches += 1;
     				containCopy.removeItem(x + 3, 1);
     			}
     		}
     	}
-    	if (matches == recipeItems.size())
-    	{
-    		retVal = true;
-    	} else
-    	{
-    		retVal = false;
-    	}
-        return retVal;
+    	System.out.println("There were " + matches + " matches out of " + recipeItems.size());
+    	return matches == recipeItems.size();
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer pContainer) {
+    public ItemStack assemble(RecipeWrapper pContainer) {
         return output;
     }
 
